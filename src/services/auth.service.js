@@ -6,6 +6,8 @@
  * ============================================================================
  */
 import axios from "axios";
+import { USE_MOCKS, delay } from "./mocks/mockHelpers";
+import { mockUsuarios } from "./mocks/mockData";
 
 const RUTA_AUTENTICACION = "http://localhost:8080/api/auth";
 
@@ -13,6 +15,22 @@ const RUTA_AUTENTICACION = "http://localhost:8080/api/auth";
  * Valida credenciales e inicializa sesión persistiendo el token de seguridad.
  */
 export const login = async (correoElectronico, contrasena) => {
+  if (USE_MOCKS) {
+    // La contraseña no se valida en modo mock (no hay backend que la verifique).
+    const usuario = mockUsuarios.find(
+      (u) => u.correoElectronico === correoElectronico && u.estado === "ACTIVO"
+    );
+
+    if (!usuario) {
+      throw { response: { data: { mensaje: "Credenciales inválidas" } } };
+    }
+
+    // Login.jsx lee `data.rol` directamente, así que va al nivel raíz (no anidado en "usuario").
+    const data = { token: "mock-jwt-token", ...usuario };
+    localStorage.setItem("token", data.token);
+    return delay(data);
+  }
+
   const respuesta = await axios.post(`${RUTA_AUTENTICACION}/login`, {
     correoElectronico,
     contrasena,

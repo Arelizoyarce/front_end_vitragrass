@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ============================================================================
  * Barril de Exportación Centralizada - Capa de Servicios VitraGlass
  * Facilita la importación unificada de módulos de servicio en la aplicación
