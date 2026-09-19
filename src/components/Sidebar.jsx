@@ -93,13 +93,13 @@ const Sidebar = () => {
       }}>
         VitraGlass
       </Typography>
-      <Typography sx={{
+            <Typography sx={{
         fontSize: '10px',
         color: '#9ea3ac',
         letterSpacing: '0.5px',
         textTransform: 'uppercase'
       }}>
-        Sistema de gestión
+        Panel de gestión
       </Typography>
     </Box>
   </Box>
