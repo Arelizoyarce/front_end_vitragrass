@@ -99,7 +99,7 @@ const Sidebar = () => {
         letterSpacing: '0.5px',
         textTransform: 'uppercase'
       }}>
-        Panel de gestión
+        Gestión VitraGlass
       </Typography>
     </Box>
   </Box>
@@ -176,7 +176,7 @@ const Sidebar = () => {
               <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}>
                 <LogoutIcon />
               </ListItemIcon>
-              <ListItemText primary="Logout" />
+              <ListItemText primary="Cerrar sesión" />
             </ListItemButton>
           </ListItem>
         </List>
